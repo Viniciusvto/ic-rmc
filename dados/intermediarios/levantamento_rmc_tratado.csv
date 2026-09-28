@@ -1,0 +1,37 @@
+municipio;organizacao;tipo_registro;anos_inventariados;latitude;longitude;observacao;ano_inicio;ano_fim;qtd_anos;setor
+Americana;Amparo Energia;Matriz;2024;-22,69628;-47,31110;;2024;2024;1;Energia
+Americana;GFL Logística;Controlada;2020,2021;-22,72137;-47,34525;;2020;2021;2;Transporte e Logística
+Campinas;BDO RCS Auditores Independentes - Sociedade Simples - Campinas;Controlada;2023,2024,2025;-22,90470;-47,04762;;2023;2025;3;Serviços Profissionais
+Campinas;Bresco Viracopos;Controlada;2025;-23,00606;-47,11524;;2025;2025;1;Imobiliário Logístico
+Campinas;CI&T Software S.A.;Matriz;2022,2023,2024,2025;-22,81152;-47,04796;;2022;2025;4;Tecnologia da Informação
+Campinas;Condomínio Edifício Residencial Porto di Nucci;Matriz;2011,2012;-22,91684;-47,04770;;2011;2012;2;Imobiliário Residencial
+Campinas;CPFL Energia;Matriz;2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025;-22,85851;-47,04627;;2011;2025;15;Energia
+Campinas;Deloitte - Campinas;Unidade;2013,2014;-22,86626;-47,02343;;2013;2014;2;Serviços Profissionais
+Campinas;Magalog Operador Logístico;Unidade;2021;-22,99861;-47,10205;;2021;2021;1;Transporte e Logística
+Campinas;PUC-Campinas;Matriz;2024,2025;-22,83435;-47,04792;;2024;2025;2;Educação
+Campinas;Samsung Eletrônica da Amazônia Ltda;Matriz;2022,2023,2024,2025;-22,84889;-47,02785;;2022;2025;4;Eletroeletrônicos
+Campinas;SG4;Matriz;2023,2024,2025;-22,89906;-47,03714;;2023;2025;3;Não identificado
+Campinas;Venturus;Matriz;2024,2025;-22,81153;-47,04803;;2024;2025;2;Tecnologia da Informação
+Campinas;Vert Ecotech S.A.;Matriz;2025;-22,84782;-47,08386;;2025;2025;1;Meio Ambiente e Saneamento
+Campinas;Viracopos;Controlada;2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025;-22,93696;-47,08454;;2015;2025;11;Infraestrutura Aeroportuária
+Campinas;Zoetis Indústria;Matriz;2021,2022,2023,2024,2025;-22,89188;-47,12490;;2021;2025;5;Farmacêutico - Saúde Animal
+Campinas;LSL Transportes - Campinas;Unidade;2015;;;Geolocalização inválida no mapa - município inferido pelo nome da unidade;2015;2015;1;Transporte e Logística
+Hortolândia;MOPAR Hortolândia;Unidade;2017;-22,86196;-47,17948;;2017;2017;1;Automotivo - Autopeças
+Indaiatuba;CEBI Brasil;Matriz;2025;-23,06410;-47,15617;;2025;2025;1;Automotivo - Autopeças
+Indaiatuba;KION South America;Matriz;2023,2024,2025;-23,08643;-47,18045;;2023;2025;3;Bens de Capital
+Indaiatuba;Toyota do Brasil - Indaiatuba;Unidade;2021;-23,14094;-47,24668;;2021;2021;1;Automotivo - Montadora
+Itatiba;Beiersdorf;Controlada;2011,2012,2013,2014,2015;-23,01070;-46,76590;;2011;2015;5;Higiene Pessoal e Cosméticos
+Jaguariúna;Motorola;Matriz;2023;-22,68991;-47,01212;;2023;2023;1;Eletroeletrônicos
+Paulínia;Silcon - PTR Paulínia;Unidade;2019,2020,2021,2022;-22,78070;-47,20335;;2019;2022;4;Meio Ambiente e Saneamento
+Paulínia;TransJordano Ltda;Matriz;2025;-22,72738;-47,15543;;2025;2025;1;Transporte e Logística
+Paulínia;LSL Transportes - Paulínia;Unidade;2015;;;Geolocalização inválida no mapa - município inferido pelo nome da unidade;2015;2015;1;Transporte e Logística
+Santa Bárbara d'Oeste;Denso do Brasil;Unidade;2024,2025;-22,74798;-47,38306;;2024;2025;2;Automotivo - Autopeças
+Sumaré;BRK Sumaré;Unidade;2021,2022,2023,2024,2025;-22,82552;-47,27262;;2021;2025;5;Meio Ambiente e Saneamento
+Sumaré;Grupo LSL - Matriz;Matriz;2015,2016;-22,83386;-47,20538;;2015;2016;2;Transporte e Logística
+Sumaré;Honda Automóveis;Matriz;2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025;-22,82756;-47,20085;;2010;2025;16;Automotivo - Montadora
+Sumaré;Honda Automóveis - Fábrica Sumaré;Unidade;2017,2018,2019,2020,2021;-22,82761;-47,20089;;2017;2021;5;Automotivo - Montadora
+Valinhos;Concepta Ingredients;Matriz;2025;-23,00768;-47,02319;;2025;2025;1;Alimentos e Ingredientes
+Vinhedo;AGV Logística;Matriz;2022,2023,2024,2025;-23,05830;-46,99983;;2022;2025;4;Transporte e Logística
+Vinhedo;Ascenty Matriz;Matriz;2020,2021,2022,2023,2024,2025;-23,07000;-47,01189;;2020;2025;6;Tecnologia da Informação - Data Center
+Vinhedo;Log&Print;Matriz;2010,2011,2012,2013,2014,2015;-23,06719;-46,99343;;2010;2015;6;Transporte e Logística
+Vinhedo;Symrise;Controlada;2023,2024;-23,06692;-46,99411;;2023;2024;2;Química - Aromas e Fragrâncias

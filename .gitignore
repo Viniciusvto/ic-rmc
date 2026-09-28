@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+.ipynb_checkpoints/
+# temporários do Office (aparecem quando um .docx está aberto)
+~$*
+.DS_Store
+Thumbs.db

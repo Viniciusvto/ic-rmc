@@ -1,0 +1,37 @@
+municipio;organizacao;tipo_registro;anos_inventariados;latitude;longitude;observacao
+Americana;AMPARO ENERGIA;Matriz;2024;-22.69628;-47.31110;
+Americana;GFL LOGISTICA;Controlada;2020,2021;-22.72137;-47.34525;
+Campinas;BDO RCS Auditores Independentes - Sociedade Simples - CAM;Controlada;2023,2024,2025;-22.90470;-47.04762;
+Campinas;Bresco Viracopos;Controlada;2025;-23.00606;-47.11524;
+Campinas;Ci&T Software S/A;Matriz;2022,2023,2024,2025;-22.81152;-47.04796;
+Campinas;Condominio Edificio Residencial Porto di Nucci;Matriz;2011,2012;-22.91684;-47.04770;
+Campinas;CPFL ENERGIA;Matriz;2011-2025;-22.85851;-47.04627;
+Campinas;Deloitte - Campinas;Unidade;2013,2014;-22.86626;-47.02343;
+Campinas;Magalog Operador Logistico;Unidade;2021;-22.99861;-47.10205;
+Campinas;PUC-Campinas;Matriz;2024,2025;-22.83435;-47.04792;
+Campinas;SAMSUNG ELETRONICA DA AMAZONIA LTDA;Matriz;2022,2023,2024,2025;-22.84889;-47.02785;
+Campinas;SG4;Matriz;2023,2024,2025;-22.89906;-47.03714;
+Campinas;Venturus;Matriz;2024,2025;-22.81153;-47.04803;
+Campinas;VERT ECOTECH SA;Matriz;2025;-22.84782;-47.08386;
+Campinas;Viracopos;Controlada;2015-2025;-22.93696;-47.08454;
+Campinas;Zoetis Industria;Matriz;2021-2025;-22.89188;-47.12490;
+Campinas;LSL Transportes CAM;Unidade;2015;;;Geolocalizacao invalida no mapa - municipio inferido pelo nome da unidade
+Hortolandia;MOPAR Hortolandia;Unidade;2017;-22.86196;-47.17948;
+Indaiatuba;CEBI Brasil;Matriz;2025;-23.06410;-47.15617;
+Indaiatuba;KION South America;Matriz;2023,2024,2025;-23.08643;-47.18045;
+Indaiatuba;TOYOTA DO BRASIL - INDAIATUBA;Unidade;2021;-23.14094;-47.24668;
+Itatiba;BEIERSDORF;Controlada;2011-2015;-23.01070;-46.76590;
+Jaguariuna;Motorola;Matriz;2023;-22.68991;-47.01212;
+Paulinia;Silcon - PTR Paulinia;Unidade;2019-2022;-22.78070;-47.20335;
+Paulinia;TransJordano Ltda;Matriz;2025;-22.72738;-47.15543;
+Paulinia;LSL Transportes Paulinia;Unidade;2015;;;Geolocalizacao invalida no mapa - municipio inferido pelo nome da unidade
+Santa Barbara d'Oeste;DENSO DO BRASIL;Unidade;2024,2025;-22.74798;-47.38306;
+Sumare;BRK SUMARE;Unidade;2021-2025;-22.82552;-47.27262;
+Sumare;Grupo LSL - Matriz;Matriz;2015,2016;-22.83386;-47.20538;
+Sumare;Honda Automoveis;Matriz;2010-2025;-22.82756;-47.20085;
+Sumare;Honda Automoveis - Fabrica Sumare;Unidade;2017-2021;-22.82761;-47.20089;
+Valinhos;Concepta Ingredients;Matriz;2025;-23.00768;-47.02319;
+Vinhedo;AGV LOGISTICA;Matriz;2022-2025;-23.05830;-46.99983;
+Vinhedo;Ascenty Matriz;Matriz;2020-2025;-23.07000;-47.01189;
+Vinhedo;Log&Print;Matriz;2010-2015;-23.06719;-46.99343;
+Vinhedo;Symrise;Controlada;2023,2024;-23.06692;-46.99411;
