@@ -1,37 +1,37 @@
-﻿id;org;municipio;tipo;setor;ini;fim;n;continua;industrial;ativo;obs
-RMC001;Amparo Energia;Americana;Matriz;Energia;2024;2024;1;True;False;True;
-RMC002;GFL Logística;Americana;Controlada;Transporte e Logística;2020;2021;2;True;False;False;
-RMC003;BDO RCS Auditores Independentes - Sociedade Simples - Campinas;Campinas;Controlada;Serviços Profissionais;2023;2025;3;True;False;True;
-RMC004;Bresco Viracopos;Campinas;Controlada;Imobiliário Logístico;2025;2025;1;True;False;True;
-RMC005;CI&T Software S.A.;Campinas;Matriz;Tecnologia da Informação;2022;2025;4;True;False;True;
-RMC006;Condomínio Edifício Residencial Porto di Nucci;Campinas;Matriz;Imobiliário Residencial;2011;2012;2;True;False;False;
-RMC007;CPFL Energia;Campinas;Matriz;Energia;2011;2025;15;True;False;True;
-RMC008;Deloitte - Campinas;Campinas;Unidade;Serviços Profissionais;2013;2014;2;True;False;False;
-RMC009;Magalog Operador Logístico;Campinas;Unidade;Transporte e Logística;2021;2021;1;True;False;False;
-RMC010;PUC-Campinas;Campinas;Matriz;Educação;2024;2025;2;True;False;True;
-RMC011;Samsung Eletrônica da Amazônia Ltda;Campinas;Matriz;Eletroeletrônicos;2022;2025;4;True;True;True;
-RMC012;SG4;Campinas;Matriz;Não identificado;2023;2025;3;True;False;True;
-RMC013;Venturus;Campinas;Matriz;Tecnologia da Informação;2024;2025;2;True;False;True;
-RMC014;Vert Ecotech S.A.;Campinas;Matriz;Meio Ambiente e Saneamento;2025;2025;1;True;False;True;
-RMC015;Viracopos;Campinas;Controlada;Infraestrutura Aeroportuária;2015;2025;11;True;False;True;
-RMC016;Zoetis Indústria;Campinas;Matriz;Farmacêutico - Saúde Animal;2021;2025;5;True;True;True;
-RMC017;LSL Transportes - Campinas;Campinas;Unidade;Transporte e Logística;2015;2015;1;True;False;False;Geolocalização inválida no mapa - município inferido pelo nome da unidade
-RMC018;MOPAR Hortolândia;Hortolândia;Unidade;Automotivo - Autopeças;2017;2017;1;True;True;False;
-RMC019;CEBI Brasil;Indaiatuba;Matriz;Automotivo - Autopeças;2025;2025;1;True;True;True;
-RMC020;KION South America;Indaiatuba;Matriz;Bens de Capital;2023;2025;3;True;True;True;
-RMC021;Toyota do Brasil - Indaiatuba;Indaiatuba;Unidade;Automotivo - Montadora;2021;2021;1;True;True;False;
-RMC022;Beiersdorf;Itatiba;Controlada;Higiene Pessoal e Cosméticos;2011;2015;5;True;True;False;
-RMC023;Motorola;Jaguariúna;Matriz;Eletroeletrônicos;2023;2023;1;True;True;False;
-RMC024;Silcon - PTR Paulínia;Paulínia;Unidade;Meio Ambiente e Saneamento;2019;2022;4;True;False;False;
-RMC025;TransJordano Ltda;Paulínia;Matriz;Transporte e Logística;2025;2025;1;True;False;True;
-RMC026;LSL Transportes - Paulínia;Paulínia;Unidade;Transporte e Logística;2015;2015;1;True;False;False;Geolocalização inválida no mapa - município inferido pelo nome da unidade
-RMC027;Denso do Brasil;Santa Bárbara d'Oeste;Unidade;Automotivo - Autopeças;2024;2025;2;True;True;True;
-RMC028;BRK Sumaré;Sumaré;Unidade;Meio Ambiente e Saneamento;2021;2025;5;True;False;True;
-RMC029;Grupo LSL - Matriz;Sumaré;Matriz;Transporte e Logística;2015;2016;2;True;False;False;
-RMC030;Honda Automóveis;Sumaré;Matriz;Automotivo - Montadora;2010;2025;16;True;True;True;
-RMC031;Honda Automóveis - Fábrica Sumaré;Sumaré;Unidade;Automotivo - Montadora;2017;2021;5;True;True;False;
-RMC032;Concepta Ingredients;Valinhos;Matriz;Alimentos e Ingredientes;2025;2025;1;True;True;True;
-RMC033;AGV Logística;Vinhedo;Matriz;Transporte e Logística;2022;2025;4;True;False;True;
-RMC034;Ascenty Matriz;Vinhedo;Matriz;Tecnologia da Informação - Data Center;2020;2025;6;True;False;True;
-RMC035;Log&Print;Vinhedo;Matriz;Transporte e Logística;2010;2015;6;True;False;False;
-RMC036;Symrise;Vinhedo;Controlada;Química - Aromas e Fragrâncias;2023;2024;2;True;True;True;
+﻿id;org;municipio;tipo;setor;anos;ini;fim;n;continua;industrial;ativo;obs
+RMC001;Amparo Energia;Americana;Matriz;Energia;2024;2024;2024;1;True;False;True;
+RMC002;GFL Logística;Americana;Controlada;Transporte e Logística;"2020;2021";2020;2021;2;True;False;False;
+RMC003;BDO RCS Auditores Independentes - Sociedade Simples - Campinas;Campinas;Controlada;Serviços Profissionais;"2023;2024;2025";2023;2025;3;True;False;True;
+RMC004;Bresco Viracopos;Campinas;Controlada;Imobiliário Logístico;2025;2025;2025;1;True;False;True;
+RMC005;CI&T Software S.A.;Campinas;Matriz;Tecnologia da Informação;"2022;2023;2024;2025";2022;2025;4;True;False;True;
+RMC006;Condomínio Edifício Residencial Porto di Nucci;Campinas;Matriz;Imobiliário Residencial;"2011;2012";2011;2012;2;True;False;False;
+RMC007;CPFL Energia;Campinas;Matriz;Energia;"2011;2012;2013;2014;2015;2016;2017;2018;2019;2020;2021;2022;2023;2024;2025";2011;2025;15;True;False;True;
+RMC008;Deloitte - Campinas;Campinas;Unidade;Serviços Profissionais;"2013;2014";2013;2014;2;True;False;False;
+RMC009;Magalog Operador Logístico;Campinas;Unidade;Transporte e Logística;2021;2021;2021;1;True;False;False;
+RMC010;PUC-Campinas;Campinas;Matriz;Educação;"2024;2025";2024;2025;2;True;False;True;
+RMC011;Samsung Eletrônica da Amazônia Ltda;Campinas;Matriz;Eletroeletrônicos;"2022;2023;2024;2025";2022;2025;4;True;True;True;
+RMC012;SG4;Campinas;Matriz;Não identificado;"2023;2024;2025";2023;2025;3;True;False;True;
+RMC013;Venturus;Campinas;Matriz;Tecnologia da Informação;"2024;2025";2024;2025;2;True;False;True;
+RMC014;Vert Ecotech S.A.;Campinas;Matriz;Meio Ambiente e Saneamento;2025;2025;2025;1;True;False;True;
+RMC015;Viracopos;Campinas;Controlada;Infraestrutura Aeroportuária;"2015;2016;2017;2018;2019;2020;2021;2022;2023;2024;2025";2015;2025;11;True;False;True;
+RMC016;Zoetis Indústria;Campinas;Matriz;Farmacêutico - Saúde Animal;"2021;2022;2023;2024;2025";2021;2025;5;True;True;True;
+RMC017;LSL Transportes - Campinas;Campinas;Unidade;Transporte e Logística;2015;2015;2015;1;True;False;False;Geolocalização inválida no mapa - município inferido pelo nome da unidade
+RMC018;MOPAR Hortolândia;Hortolândia;Unidade;Automotivo - Autopeças;2017;2017;2017;1;True;True;False;
+RMC019;CEBI Brasil;Indaiatuba;Matriz;Automotivo - Autopeças;2025;2025;2025;1;True;True;True;
+RMC020;KION South America;Indaiatuba;Matriz;Bens de Capital;"2023;2024;2025";2023;2025;3;True;True;True;
+RMC021;Toyota do Brasil - Indaiatuba;Indaiatuba;Unidade;Automotivo - Montadora;2021;2021;2021;1;True;True;False;
+RMC022;Beiersdorf;Itatiba;Controlada;Higiene Pessoal e Cosméticos;"2011;2012;2013;2014;2015";2011;2015;5;True;True;False;
+RMC023;Motorola;Jaguariúna;Matriz;Eletroeletrônicos;2023;2023;2023;1;True;True;False;
+RMC024;Silcon - PTR Paulínia;Paulínia;Unidade;Meio Ambiente e Saneamento;"2019;2020;2021;2022";2019;2022;4;True;False;False;
+RMC025;TransJordano Ltda;Paulínia;Matriz;Transporte e Logística;2025;2025;2025;1;True;False;True;
+RMC026;LSL Transportes - Paulínia;Paulínia;Unidade;Transporte e Logística;2015;2015;2015;1;True;False;False;Geolocalização inválida no mapa - município inferido pelo nome da unidade
+RMC027;Denso do Brasil;Santa Bárbara d'Oeste;Unidade;Automotivo - Autopeças;"2024;2025";2024;2025;2;True;True;True;
+RMC028;BRK Sumaré;Sumaré;Unidade;Meio Ambiente e Saneamento;"2021;2022;2023;2024;2025";2021;2025;5;True;False;True;
+RMC029;Grupo LSL - Matriz;Sumaré;Matriz;Transporte e Logística;"2015;2016";2015;2016;2;True;False;False;
+RMC030;Honda Automóveis;Sumaré;Matriz;Automotivo - Montadora;"2010;2011;2012;2013;2014;2015;2016;2017;2018;2019;2020;2021;2022;2023;2024;2025";2010;2025;16;True;True;True;
+RMC031;Honda Automóveis - Fábrica Sumaré;Sumaré;Unidade;Automotivo - Montadora;"2017;2018;2019;2020;2021";2017;2021;5;True;True;False;
+RMC032;Concepta Ingredients;Valinhos;Matriz;Alimentos e Ingredientes;2025;2025;2025;1;True;True;True;
+RMC033;AGV Logística;Vinhedo;Matriz;Transporte e Logística;"2022;2023;2024;2025";2022;2025;4;True;False;True;
+RMC034;Ascenty Matriz;Vinhedo;Matriz;Tecnologia da Informação - Data Center;"2020;2021;2022;2023;2024;2025";2020;2025;6;True;False;True;
+RMC035;Log&Print;Vinhedo;Matriz;Transporte e Logística;"2010;2011;2012;2013;2014;2015";2010;2015;6;True;False;False;
+RMC036;Symrise;Vinhedo;Controlada;Química - Aromas e Fragrâncias;"2023;2024";2023;2024;2;True;True;True;
