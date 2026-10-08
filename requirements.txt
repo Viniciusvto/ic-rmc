@@ -1,4 +1,6 @@
-requests
-pandas
-shapely
-folium
+# Dependências do pipeline, com versão fixa para o resultado ser reproduzível.
+# Testado com Python 3.14. Para atualizar: mude a versão aqui, rode o pipeline e os testes.
+requests==2.34.2
+pandas==3.0.6
+shapely==2.2.0
+folium==0.20.0
