@@ -40,8 +40,17 @@ pip install -r requirements.txt
 ./scripts/rodar_tudo.sh
 ```
 
-Para abrir no WSL: `cd entregas && explorer.exe .` e dar dois cliques no arquivo
-(`explorer.exe` não aceita caminho com `/`).
+O `rodar_tudo.sh` usa o Python do `.venv` sozinho (não precisa ativar) e, no WSL, abre o relatório
+e o mapa no navegador ao final. Para só rodar, sem abrir: `./scripts/rodar_tudo.sh --sem-abrir`.
+
+O script vai sozinho para a raiz do projeto, então pode ser chamado de qualquer pasta. O `./` é
+obrigatório: o bash só procura comandos nas pastas do `PATH`, e a pasta atual não está nele.
+
+```bash
+./rodar_tudo.sh                          # de dentro de scripts/
+./scripts/rodar_tudo.sh                  # da raiz do projeto
+~/projetos/ic-rmc/scripts/rodar_tudo.sh  # de qualquer lugar
+```
 
 O `01` não sobrescreve uma coleta já feita no mesmo dia, e o `02` não baixa de novo os contornos do
 IBGE se eles já existem (use `python scripts/02_baixar_municipios.py --atualizar` para forçar).
