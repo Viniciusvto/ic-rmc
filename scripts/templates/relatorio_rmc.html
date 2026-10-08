@@ -347,7 +347,8 @@ function porAno(W) {
   const A0 = ANO_INI, A1 = ANO_FIM, serie = [];
   for (let a = A0; a <= A1; a++) serie.push([a, DADOS.filter(d => d.anos.includes(a)).length]);
   const L = 34, Rp = 14, T = 16, B = 30, H = 230;
-  const max = Math.max(10, Math.ceil(Math.max(...serie.map(s => s[1])) / 5) * 5);
+  // múltiplo de 5 acima do pico (o +1 deixa espaço para o rótulo do último ponto), mínimo 10
+  const max = Math.max(10, Math.ceil((Math.max(...serie.map(s => s[1])) + 1) / 5) * 5);
   const x = a => L + (a - A0) / (A1 - A0) * (W - L - Rp);
   const y = v => T + (1 - v / max) * (H - T - B);
   svg.setAttribute("width", W); svg.setAttribute("height", H);

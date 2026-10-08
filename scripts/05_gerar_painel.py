@@ -20,6 +20,9 @@ GEOJSON = RAIZ / "dados" / "brutos" / "ibge" / "rmc_municipios.geojson"
 SAIDA = RAIZ / "entregas" / "painel_rmc.html"
 
 CORES = {"Matriz": "#1f77b4", "Unidade": "#ff7f0e", "Controlada": "#2ca02c"}
+# Esri: CartoDB passou a exigir chave e o OpenStreetMap devolve 403 para arquivo aberto do disco
+TILES = ("https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/"
+         "World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}")
 
 
 def data_da_coleta():
@@ -36,7 +39,8 @@ def main():
     for f in colecao["features"]:
         f["properties"]["qtd"] = int(contagem.get(f["properties"]["nome"], 0))
 
-    mapa = folium.Map(tiles="https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}", attr="Tiles © Esri")
+    mapa = folium.Map(tiles=None)
+    folium.TileLayer(TILES, attr="Tiles © Esri", name="Mapa base (Esri)").add_to(mapa)  # name = rótulo na legenda
 
     contornos = folium.GeoJson(
         colecao, name="Municípios da RMC",
