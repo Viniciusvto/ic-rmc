@@ -7,10 +7,12 @@ Saída   : dados/brutos/ibge/municipios_sp.json      (lista oficial de municípi
           dados/brutos/ibge/rmc_municipios.geojson  (contornos dos 20 municípios da RMC)
 
 Uso:
-    python scripts/02_baixar_municipios.py
+    python scripts/02_baixar_municipios.py              # não faz nada se os arquivos já existem
+    python scripts/02_baixar_municipios.py --atualizar  # baixa de novo e sobrescreve
 """
 
 import json
+import sys
 import time
 from pathlib import Path
 
@@ -81,6 +83,11 @@ def baixar_contorno(codigo):
 
 
 def main():
+    saidas = [PASTA_SAIDA / "municipios_sp.json", PASTA_SAIDA / "rmc_municipios.geojson"]
+    if all(s.exists() for s in saidas) and "--atualizar" not in sys.argv:
+        # dados brutos não são sobrescritos sem pedido explícito
+        print("Contornos do IBGE já baixados, mantidos sem alteração (use --atualizar para baixar de novo).")
+        return
     PASTA_SAIDA.mkdir(parents=True, exist_ok=True)
 
     # 1. Lista oficial de SP → guarda como veio
