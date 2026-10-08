@@ -19,14 +19,21 @@ import requests
 # ---------------------------------------------------------------------------
 # Configuração
 # ---------------------------------------------------------------------------
-RAIZ = Path(__file__).resolve().parent.parent          # .../ic-rmc
+RAIZ = Path(__file__).resolve().parent.parent  # .../ic-rmc
 PASTA_SAIDA = RAIZ / "dados" / "brutos" / "fgv"
 
-URL = ("https://registropublicodeemissoesapi.fgv.br/api/services/app/"
-       "EstatisticaPublica/SearchOrganizationsGeolocalization")
+URL = (
+    "https://registropublicodeemissoesapi.fgv.br/api/services/app/"
+    "EstatisticaPublica/SearchOrganizationsGeolocalization"
+)
 CABECALHOS = {"User-Agent": "Mozilla/5.0 (pesquisa de IC - FATEC Campinas)"}
-CAMPOS_ESPERADOS = {"latitude", "longitude", "organizationName",
-                    "organizationTypeName", "invetoriedYears"}
+CAMPOS_ESPERADOS = {
+    "latitude",
+    "longitude",
+    "organizationName",
+    "organizationTypeName",
+    "invetoriedYears",
+}
 
 
 # ---------------------------------------------------------------------------
@@ -35,7 +42,7 @@ CAMPOS_ESPERADOS = {"latitude", "longitude", "organizationName",
 def baixar():
     """Faz o POST sem filtros e devolve o corpo da resposta (dicionário)."""
     resposta = requests.post(URL, json={}, headers=CABECALHOS, timeout=60)
-    resposta.raise_for_status()                 # erro HTTP (404, 500...) para aqui
+    resposta.raise_for_status()  # erro HTTP (404, 500...) para aqui
     corpo = resposta.json()
     if not corpo.get("success"):
         raise RuntimeError(f"A API respondeu sem sucesso: {corpo.get('error')}")
@@ -55,19 +62,27 @@ def conferir(pontos):
         print(f"  {tipo:<12} {qtd}")
 
 
-def salvar(corpo):
+def arquivo_de_hoje():
+    """Caminho da coleta de hoje (a data no nome identifica a coleta)."""
+    return PASTA_SAIDA / f"organizacoes_{date.today().isoformat()}.json"
+
+
+def salvar(corpo, arquivo):
     """Grava a resposta original com a data da coleta no nome do arquivo."""
     PASTA_SAIDA.mkdir(parents=True, exist_ok=True)
-    arquivo = PASTA_SAIDA / f"organizacoes_{date.today().isoformat()}.json"
     with open(arquivo, "w", encoding="utf-8") as f:
         json.dump(corpo, f, ensure_ascii=False, indent=1)
     print(f"Salvo em: {arquivo.relative_to(RAIZ)}")
 
 
 def main():
+    arquivo = arquivo_de_hoje()
+    if arquivo.exists():  # dados brutos nunca são sobrescritos
+        print(f"Coleta de hoje já existe, mantida sem alteração: {arquivo.relative_to(RAIZ)}")
+        return
     corpo = baixar()
     conferir(corpo["result"]["organizations"])
-    salvar(corpo)
+    salvar(corpo, arquivo)
 
 
 if __name__ == "__main__":
