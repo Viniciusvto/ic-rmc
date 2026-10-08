@@ -86,7 +86,10 @@ def main():
     saidas = [PASTA_SAIDA / "municipios_sp.json", PASTA_SAIDA / "rmc_municipios.geojson"]
     if all(s.exists() for s in saidas) and "--atualizar" not in sys.argv:
         # dados brutos não são sobrescritos sem pedido explícito
-        print("Contornos do IBGE já baixados, mantidos sem alteração (use --atualizar para baixar de novo).")
+        print(
+            "Contornos do IBGE já baixados, mantidos sem alteração "
+            "(use --atualizar para baixar de novo)."
+        )
         return
     PASTA_SAIDA.mkdir(parents=True, exist_ok=True)
 

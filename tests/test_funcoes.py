@@ -57,8 +57,14 @@ def test_limpar_texto_remove_espacos_extras(script):
 # 06_gerar_relatorio — registro, marcadores, preencher, carregar
 # ---------------------------------------------------------------------------
 def linha(**campos):
-    padrao = dict(organizacao="Org", municipio="Campinas", tipo="Matriz",
-                  setor="Energia", anos="2023;2021;2022", industrial="False")
+    padrao = dict(
+        organizacao="Org",
+        municipio="Campinas",
+        tipo="Matriz",
+        setor="Energia",
+        anos="2023;2021;2022",
+        industrial="False",
+    )
     padrao.update(campos)
     return pd.Series(padrao)
 
@@ -69,10 +75,19 @@ def test_registro_ordena_anos_e_calcula_serie(script):
     assert (r["ini"], r["fim"], r["n"]) == (2021, 2023, 3)
 
 
-@pytest.mark.parametrize("valor, esperado", [
-    ("True", True), ("true", True), ("sim", True), ("1", True),
-    ("False", False), ("não", False), ("0", False), ("", False),
-])
+@pytest.mark.parametrize(
+    "valor, esperado",
+    [
+        ("True", True),
+        ("true", True),
+        ("sim", True),
+        ("1", True),
+        ("False", False),
+        ("não", False),
+        ("0", False),
+        ("", False),
+    ],
+)
 def test_registro_industrial(script, valor, esperado):
     r = script("06_gerar_relatorio").registro(linha(industrial=valor))
     assert r["industrial"] is esperado
@@ -111,7 +126,7 @@ def test_carregar_falha_se_organizacao_sem_setor(script, tmp_path, monkeypatch):
     setores = tmp_path / "setores.csv"
     base.write_text("organizacao,anos,observacao\nA,2024,\nB,2024,\n", encoding="utf-8")
     setores.write_text("organizacao,setor,industrial\nA,Energia,False\n", encoding="utf-8")
-    monkeypatch.setattr(m, "CSV", base)        # aponta o script para os arquivos de teste
+    monkeypatch.setattr(m, "CSV", base)  # aponta o script para os arquivos de teste
     monkeypatch.setattr(m, "SETORES", setores)
     monkeypatch.setattr(m, "RAIZ", tmp_path)
     with pytest.raises(ValueError, match="B"):

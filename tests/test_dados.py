@@ -30,10 +30,14 @@ def test_sem_organizacao_repetida(base):
 
 
 def test_anos_validos_e_coerentes(base):
-    for _, l in base.iterrows():
-        anos = [int(a) for a in l.anos.split(";")]
-        assert all(2000 <= a <= 2100 for a in anos), l.organizacao
-        assert (min(anos), max(anos), len(anos)) == (l.primeiro_ano, l.ultimo_ano, l.qtd_anos)
+    for _, linha in base.iterrows():
+        anos = [int(a) for a in linha.anos.split(";")]
+        assert all(2000 <= a <= 2100 for a in anos), linha.organizacao
+        assert (min(anos), max(anos), len(anos)) == (
+            linha.primeiro_ano,
+            linha.ultimo_ano,
+            linha.qtd_anos,
+        )
 
 
 def test_toda_organizacao_tem_setor(base):

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-06_gerar_relatorio.py — Gera o relatório com os gráficos (linha do tempo, municípios, anos, setores).
+06_gerar_relatorio.py — Gera o relatório com gráficos (linha do tempo, municípios, anos, setores).
 
 Entradas: dados/tratados/rmc_inventarios.csv
           dados/manual/setores.csv                (decisão humana: setor e industrial)
@@ -27,7 +27,9 @@ SETORES = RAIZ / "dados" / "manual" / "setores.csv"
 TEMPLATE = RAIZ / "scripts" / "templates" / "relatorio_rmc.html"
 SAIDA = RAIZ / "entregas" / "relatorio_rmc.html"
 
-ANO_ATIVO = 2024  # publicou ano-base 2024 ou depois → "publicando" (mesma regra do painel de setembro)
+ANO_ATIVO = (
+    2024  # publicou ano-base 2024 ou depois → "publicando" (mesma regra do painel de setembro)
+)
 VERDADEIRO = {"true", "sim", "1"}
 
 
@@ -42,8 +44,9 @@ def carregar():
 
     sem_setor = junto[junto.setor.str.strip() == ""]
     if not sem_setor.empty:
-        raise ValueError(f"Organizações sem setor em {SETORES.relative_to(RAIZ)}: "
-                         f"{list(sem_setor.organizacao)}")
+        raise ValueError(
+            f"Organizações sem setor em {SETORES.relative_to(RAIZ)}: {list(sem_setor.organizacao)}"
+        )
     return junto
 
 
@@ -76,9 +79,11 @@ def marcadores(dados, n_inferidos):
     """Calcula o texto de cada marcador do template."""
     n_total = len(dados)
     inferidos = "1 inferido" if n_inferidos == 1 else f"{n_inferidos} inferidos"
-    meta = (f"Coleta da API do mapa do RPE em {data_da_coleta()} · recorte por "
-            f"<i>point-in-polygon</i> sobre as malhas municipais do IBGE · "
-            f"{n_total} registros ({inferidos} pelo nome)")
+    meta = (
+        f"Coleta da API do mapa do RPE em {data_da_coleta()} · recorte por "
+        f"<i>point-in-polygon</i> sobre as malhas municipais do IBGE · "
+        f"{n_total} registros ({inferidos} pelo nome)"
+    )
     return {
         # "</" escapado para um nome com "</script>" não fechar o <script> do HTML
         "__DADOS__": json.dumps(dados, ensure_ascii=False).replace("</", "<\\/"),
@@ -105,7 +110,7 @@ def preencher(template, valores):
 # ---------------------------------------------------------------------------
 def main():
     base = carregar()
-    dados = [registro(l) for l in base.itertuples()]
+    dados = [registro(linha) for linha in base.itertuples()]
     valores = marcadores(dados, n_inferidos=int((base.observacao != "").sum()))
 
     html = preencher(TEMPLATE.read_text(encoding="utf-8"), valores)

@@ -28,7 +28,9 @@ def chave(texto):
 
 def main():
     if DESTINO.exists():
-        raise SystemExit(f"{DESTINO.relative_to(RAIZ)} já existe — não vou sobrescrever decisões manuais.")
+        raise SystemExit(
+            f"{DESTINO.relative_to(RAIZ)} já existe — não vou sobrescrever decisões manuais."
+        )
 
     html = ANTIGO.read_text(encoding="utf-8")
     trecho = re.search(r"const DADOS = (\[.*?\]);", html, re.S)

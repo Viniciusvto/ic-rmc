@@ -1,0 +1,16 @@
+# Configuração das ferramentas de desenvolvimento (o projeto não é um pacote instalável).
+
+[tool.ruff]
+line-length = 100
+target-version = "py314"
+
+[tool.ruff.lint]
+# E/W: estilo (pycodestyle) · F: erros reais (pyflakes: variável não usada, nome indefinido)
+# I: ordem dos imports · B: armadilhas comuns (bugbear) · UP: sintaxe moderna do Python
+select = ["E", "W", "F", "I", "B", "UP"]
+
+[tool.ruff.lint.isort]
+known-local-folder = ["conftest"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

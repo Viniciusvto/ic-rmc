@@ -21,8 +21,16 @@ MANUAL = RAIZ / "dados" / "manual" / "inclusoes_rmc.csv"
 GEOJSON = RAIZ / "dados" / "brutos" / "ibge" / "rmc_municipios.geojson"
 SAIDA = RAIZ / "dados" / "tratados" / "rmc_inventarios.csv"
 
-COLUNAS = ["organizationName", "organizationTypeName", "anos", "latitude", "longitude",
-           "municipio", "codigo_ibge", "observacao"]
+COLUNAS = [
+    "organizationName",
+    "organizationTypeName",
+    "anos",
+    "latitude",
+    "longitude",
+    "municipio",
+    "codigo_ibge",
+    "observacao",
+]
 
 
 def limpar_texto(s):
@@ -32,8 +40,10 @@ def limpar_texto(s):
 
 def carregar_municipios():
     colecao = json.loads(GEOJSON.read_text(encoding="utf-8"))
-    return {f["properties"]["nome"]: (f["properties"]["codigo_ibge"], shape(f["geometry"]))
-            for f in colecao["features"]}
+    return {
+        f["properties"]["nome"]: (f["properties"]["codigo_ibge"], shape(f["geometry"]))
+        for f in colecao["features"]
+    }
 
 
 def inclusoes_manuais(municipios):
@@ -50,7 +60,9 @@ def inclusoes_manuais(municipios):
 
     invalidos = set(manual.municipio) - set(municipios)
     if invalidos:
-        raise ValueError(f"Município fora da RMC ou com grafia errada no arquivo manual: {invalidos}")
+        raise ValueError(
+            f"Município fora da RMC ou com grafia errada no arquivo manual: {invalidos}"
+        )
 
     fora = pd.read_csv(INTER / "revisar_fora_do_brasil.csv", dtype={"anos": str})
     fora["chave"] = fora.organizationName.map(limpar_texto)
@@ -60,15 +72,19 @@ def inclusoes_manuais(municipios):
 
     nao_achados = junto[junto.organizationTypeName.isna()]
     if not nao_achados.empty:
-        raise ValueError(f"Nomes do arquivo manual que não estão na lista de revisão: "
-                         f"{list(nao_achados.organizationName)}")
+        raise ValueError(
+            f"Nomes do arquivo manual que não estão na lista de revisão: "
+            f"{list(nao_achados.organizationName)}"
+        )
 
     # Coordenada substituta: um ponto garantidamente dentro do município
     interno = {n: c.representative_point() for n, (_, c) in municipios.items()}
     junto["latitude"] = junto.municipio.map(lambda m: interno[m].y)
     junto["longitude"] = junto.municipio.map(lambda m: interno[m].x)
     junto["codigo_ibge"] = junto.municipio.map(lambda m: municipios[m][0])
-    junto["observacao"] = "inferido: " + junto.justificativa.fillna("coordenada original fora do Brasil")
+    junto["observacao"] = "inferido: " + junto.justificativa.fillna(
+        "coordenada original fora do Brasil"
+    )
     return junto[COLUNAS]
 
 
@@ -86,22 +102,34 @@ def main():
     # Limpeza
     base["organizationName"] = base.organizationName.map(limpar_texto)
     antes = len(base)
-    base = base.drop_duplicates(subset=["organizationName", "organizationTypeName",
-                                        "latitude", "longitude"])
+    base = base.drop_duplicates(
+        subset=["organizationName", "organizationTypeName", "latitude", "longitude"]
+    )
     print(f"Duplicatas removidas:         {antes - len(base)}")
 
     # Colunas derivadas dos anos
-    anos = base.anos.str.split(";").apply(lambda l: [int(a) for a in l])
+    anos = base.anos.str.split(";").apply(lambda lista: [int(a) for a in lista])
     base["qtd_anos"] = anos.str.len()
     base["primeiro_ano"] = anos.apply(min)
     base["ultimo_ano"] = anos.apply(max)
     base["codigo_ibge"] = base.codigo_ibge.astype("Int64")
 
-    base = (base.rename(columns={"organizationName": "organizacao",
-                                 "organizationTypeName": "tipo"})
-                .sort_values(["municipio", "organizacao"]))
-    ordem = ["organizacao", "tipo", "municipio", "codigo_ibge", "anos", "qtd_anos",
-             "primeiro_ano", "ultimo_ano", "latitude", "longitude", "observacao"]
+    base = base.rename(
+        columns={"organizationName": "organizacao", "organizationTypeName": "tipo"}
+    ).sort_values(["municipio", "organizacao"])
+    ordem = [
+        "organizacao",
+        "tipo",
+        "municipio",
+        "codigo_ibge",
+        "anos",
+        "qtd_anos",
+        "primeiro_ano",
+        "ultimo_ano",
+        "latitude",
+        "longitude",
+        "observacao",
+    ]
 
     SAIDA.parent.mkdir(parents=True, exist_ok=True)
     base[ordem].to_csv(SAIDA, index=False, encoding="utf-8-sig")

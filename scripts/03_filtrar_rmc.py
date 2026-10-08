@@ -48,9 +48,7 @@ def carregar_pontos(arquivo):
     corpo = json.loads(arquivo.read_text(encoding="utf-8"))
     df = pd.DataFrame(corpo["result"]["organizations"])
     # CSV não guarda lista: [2025, 2022] vira o texto "2022;2025"
-    df["anos"] = df["invetoriedYears"].apply(
-        lambda a: ";".join(str(x) for x in sorted(a))
-    )
+    df["anos"] = df["invetoriedYears"].apply(lambda a: ";".join(str(x) for x in sorted(a)))
     return df.drop(columns="invetoriedYears")
 
 
@@ -91,9 +89,7 @@ def main():
     revisar["motivo"] = revisar.latitude.isna().map(
         {True: "sem coordenada", False: "coordenada fora do Brasil"}
     )
-    revisar.to_csv(
-        SAIDA / "revisar_fora_do_brasil.csv", index=False, encoding="utf-8-sig"
-    )
+    revisar.to_csv(SAIDA / "revisar_fora_do_brasil.csv", index=False, encoding="utf-8-sig")
     print(f"A) Para revisar à mão: {len(revisar)}")
     print(revisar.motivo.value_counts().to_string())
 
@@ -106,7 +102,8 @@ def main():
 
     # C) Recorte fino: point-in-polygon só nos candidatos da caixa
     achados = [
-        localizar(la, lo, municipios) for la, lo in zip(caixa.latitude, caixa.longitude)
+        localizar(la, lo, municipios)
+        for la, lo in zip(caixa.latitude, caixa.longitude, strict=True)
     ]
     caixa[["municipio", "codigo_ibge"]] = pd.DataFrame(achados, index=caixa.index)
     caixa.to_csv(SAIDA / "candidatos_caixa.csv", index=False, encoding="utf-8-sig")

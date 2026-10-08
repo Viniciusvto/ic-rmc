@@ -21,8 +21,10 @@ SAIDA = RAIZ / "entregas" / "painel_rmc.html"
 
 CORES = {"Matriz": "#1f77b4", "Unidade": "#ff7f0e", "Controlada": "#2ca02c"}
 # Esri: CartoDB passou a exigir chave e o OpenStreetMap devolve 403 para arquivo aberto do disco
-TILES = ("https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/"
-         "World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}")
+TILES = (
+    "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/"
+    "World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}"
+)
 
 
 def data_da_coleta():
@@ -40,14 +42,22 @@ def main():
         f["properties"]["qtd"] = int(contagem.get(f["properties"]["nome"], 0))
 
     mapa = folium.Map(tiles=None)
-    folium.TileLayer(TILES, attr="Tiles © Esri", name="Mapa base (Esri)").add_to(mapa)  # name = rótulo na legenda
+    folium.TileLayer(TILES, attr="Tiles © Esri", name="Mapa base (Esri)").add_to(
+        mapa
+    )  # name = rótulo na legenda
 
     contornos = folium.GeoJson(
-        colecao, name="Municípios da RMC",
-        style_function=lambda f: {"color": "#555", "weight": 1, "fillColor": "#3388ff",
-                                  "fillOpacity": 0.03 + 0.04 * min(f["properties"]["qtd"], 10)},
-        tooltip=folium.GeoJsonTooltip(fields=["nome", "qtd"],
-                                      aliases=["Município:", "Organizações:"]),
+        colecao,
+        name="Municípios da RMC",
+        style_function=lambda f: {
+            "color": "#555",
+            "weight": 1,
+            "fillColor": "#3388ff",
+            "fillOpacity": 0.03 + 0.04 * min(f["properties"]["qtd"], 10),
+        },
+        tooltip=folium.GeoJsonTooltip(
+            fields=["nome", "qtd"], aliases=["Município:", "Organizações:"]
+        ),
     ).add_to(mapa)
 
     # Uma camada por tipo → dá para ligar/desligar na legenda
@@ -55,25 +65,29 @@ def main():
     for tipo, qtd in df.tipo.value_counts().items():
         camadas[tipo] = folium.FeatureGroup(name=f"{tipo} ({qtd})").add_to(mapa)
 
-    for _, l in df.iterrows():
-        inferido = bool(l.observacao)
-        texto = (f"<b>{html.escape(l.organizacao)}</b><br>"
-                 f"{l.tipo} · {html.escape(l.municipio)}<br>"
-                 f"Anos inventariados: {l.anos.replace(';', ', ')}")
+    for _, org in df.iterrows():
+        inferido = bool(org.observacao)
+        texto = (
+            f"<b>{html.escape(org.organizacao)}</b><br>"
+            f"{org.tipo} · {html.escape(org.municipio)}<br>"
+            f"Anos inventariados: {org.anos.replace(';', ', ')}"
+        )
         if inferido:
-            texto += f"<br><i>{html.escape(l.observacao)}</i>"
+            texto += f"<br><i>{html.escape(org.observacao)}</i>"
 
         folium.CircleMarker(
-            location=[l.latitude, l.longitude], radius=7,
-            color=CORES.get(l.tipo, "gray"), fill=True,
+            location=[org.latitude, org.longitude],
+            radius=7,
+            color=CORES.get(org.tipo, "gray"),
+            fill=True,
             fill_opacity=0.25 if inferido else 0.8,
-            dash_array="3" if inferido else None,        # tracejado = posição aproximada
-            tooltip=l.organizacao,
+            dash_array="3" if inferido else None,  # tracejado = posição aproximada
+            tooltip=org.organizacao,
             popup=folium.Popup(texto, max_width=300),
-        ).add_to(camadas[l.tipo])
+        ).add_to(camadas[org.tipo])
 
     folium.LayerControl(collapsed=False).add_to(mapa)
-    mapa.fit_bounds(contornos.get_bounds())               # enquadra a RMC automaticamente
+    mapa.fit_bounds(contornos.get_bounds())  # enquadra a RMC automaticamente
 
     titulo = f"""
     <div style="position:fixed; top:12px; left:60px; z-index:9999; background:white;
@@ -81,7 +95,8 @@ def main():
                 font-family:sans-serif;">
       <b>Inventários de GEE — Região Metropolitana de Campinas</b><br>
       <small>{len(df)} organizações · Fonte: Registro Público de Emissões (FGV),
-      coleta em {data_da_coleta()} · Contornos: IBGE · Círculo tracejado = posição aproximada</small>
+      coleta em {data_da_coleta()} · Contornos: IBGE ·
+      Círculo tracejado = posição aproximada</small>
     </div>"""
     mapa.get_root().html.add_child(folium.Element(titulo))
 
