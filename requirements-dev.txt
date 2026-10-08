@@ -1,0 +1,4 @@
+# Ferramentas de desenvolvimento (testes e estilo). Não são necessárias para rodar o pipeline.
+-r requirements.txt
+pytest==9.1.1
+ruff==0.16.10
