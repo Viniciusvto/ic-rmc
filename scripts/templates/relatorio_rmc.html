@@ -164,7 +164,7 @@ footer p{margin:0 0 7px; max-width:70ch}
     <p class="sub">Uma barra por registro, do primeiro ao último ano-base publicado. É a figura que resume tudo: quando cada uma entrou, quanto tempo de série tem, e em que ano parou.</p>
     <div class="card">
       <div class="legend">
-        <span class="key"><span class="swatch" style="background:var(--s1)"></span>Publicando (ano-base 2024 ou 2025)</span>
+        <span class="key"><span class="swatch" style="background:var(--s1)"></span>Publicando (ano-base __ANO_ATIVO__ ou posterior)</span>
         <span class="key"><span class="swatch" style="background:var(--s2)"></span>Descontinuado</span>
       </div>
       <div class="scroll"><svg id="gantt"></svg></div>
@@ -233,6 +233,10 @@ footer p{margin:0 0 7px; max-width:70ch}
 <script>
 const DADOS = __DADOS__;
 
+/* primeiro e último ano-base presentes nos dados (eixos dos gráficos) */
+const ANOS = DADOS.flatMap(d => d.anos);
+const ANO_INI = Math.min(...ANOS), ANO_FIM = Math.max(...ANOS);
+
 const RMC20 = ["Americana","Artur Nogueira","Campinas","Cosmópolis","Engenheiro Coelho","Holambra",
 "Hortolândia","Indaiatuba","Itatiba","Jaguariúna","Monte Mor","Morungaba","Nova Odessa",
 "Paulínia","Pedreira","Santa Bárbara d'Oeste","Santo Antônio de Posse","Sumaré","Valinhos","Vinhedo"];
@@ -284,13 +288,13 @@ function gantt(W) {
   const LAB = W < 700 ? 168 : 210, R = 18, TOP = 26, PAD = 16;
   const dados = [...DADOS].sort((a, b) => a.ini - b.ini || a.fim - b.fim || a.org.localeCompare(b.org));
   const H = TOP + dados.length * R + 12;
-  const A0 = 2010, A1 = 2026;
+  const A0 = ANO_INI, A1 = ANO_FIM + 1;
   const x = a => LAB + (a - A0) / (A1 - A0) * (W - LAB - PAD);
   svg.setAttribute("width", W); svg.setAttribute("height", H);
 
-  for (let a = A0; a <= 2025; a++) {
+  for (let a = A0; a <= ANO_FIM; a++) {
     svg.appendChild(el("line", { x1: x(a), x2: x(a), y1: TOP - 8, y2: H - 8, stroke: css("--grid"), "stroke-width": 1 }));
-    if (a % (W < 700 ? 5 : 2) === 0 || a === 2025) {
+    if (a % (W < 700 ? 5 : 2) === 0 || a === ANO_FIM) {
       const t = el("text", { x: x(a) + 2, y: TOP - 13, fill: css("--ink-3"), "font-size": 10.5, class: "m" });
       t.textContent = a; svg.appendChild(t);
     }
@@ -340,7 +344,7 @@ function municipios(W) {
 function porAno(W) {
   const svg = document.getElementById("ano");
   svg.textContent = "";
-  const A0 = 2010, A1 = 2025, serie = [];
+  const A0 = ANO_INI, A1 = ANO_FIM, serie = [];
   for (let a = A0; a <= A1; a++) serie.push([a, DADOS.filter(d => d.anos.includes(a)).length]);
   const L = 34, Rp = 14, T = 16, B = 30, H = 230;
   const max = Math.max(10, Math.ceil(Math.max(...serie.map(s => s[1])) / 5) * 5);
@@ -372,9 +376,9 @@ function porAno(W) {
     svg.appendChild(hit);
   });
   const rot = el("text", { x: x(A1) - 4, y: y(serie[serie.length - 1][1]) - 12, "text-anchor": "end", fill: css("--ink"), "font-size": 11.5, "font-weight": 600 });
-  rot.textContent = `${serie[serie.length - 1][1]} em 2025`; svg.appendChild(rot);
+  rot.textContent = `${serie[serie.length - 1][1]} em ${A1}`; svg.appendChild(rot);
   const ini = el("text", { x: x(A0) + 6, y: y(serie[0][1]) - 11, fill: css("--ink-2"), "font-size": 11 });
-  ini.textContent = `${serie[0][1]} em 2010`; svg.appendChild(ini);
+  ini.textContent = `${serie[0][1]} em ${A0}`; svg.appendChild(ini);
 }
 
 /* ---------- gráfico 4: setores ---------- */

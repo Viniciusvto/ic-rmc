@@ -86,6 +86,7 @@ def marcadores(dados, n_inferidos):
         "__N_TOTAL__": str(n_total),
         "__N_IND__": str(sum(d["industrial"] for d in dados)),
         "__N_IND_ATIVAS__": str(sum(d["industrial"] and d["ativo"] for d in dados)),
+        "__ANO_ATIVO__": str(ANO_ATIVO),
     }
 
 

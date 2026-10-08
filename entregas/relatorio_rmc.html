@@ -164,7 +164,7 @@ footer p{margin:0 0 7px; max-width:70ch}
     <p class="sub">Uma barra por registro, do primeiro ao último ano-base publicado. É a figura que resume tudo: quando cada uma entrou, quanto tempo de série tem, e em que ano parou.</p>
     <div class="card">
       <div class="legend">
-        <span class="key"><span class="swatch" style="background:var(--s1)"></span>Publicando (ano-base 2024 ou 2025)</span>
+        <span class="key"><span class="swatch" style="background:var(--s1)"></span>Publicando (ano-base 2024 ou posterior)</span>
         <span class="key"><span class="swatch" style="background:var(--s2)"></span>Descontinuado</span>
       </div>
       <div class="scroll"><svg id="gantt"></svg></div>
@@ -233,6 +233,10 @@ footer p{margin:0 0 7px; max-width:70ch}
 <script>
 const DADOS = [{"org": "AMPARO ENERGIA", "municipio": "Americana", "tipo": "Matriz", "setor": "Energia", "anos": [2024], "ini": 2024, "fim": 2024, "n": 1, "industrial": false, "ativo": true}, {"org": "GFL LOGISTICA", "municipio": "Americana", "tipo": "Controlada", "setor": "Transporte e Logística", "anos": [2020, 2021], "ini": 2020, "fim": 2021, "n": 2, "industrial": false, "ativo": false}, {"org": "BDO RCS Auditores Independentes - Sociedade Simples - CAM", "municipio": "Campinas", "tipo": "Controlada", "setor": "Serviços Profissionais", "anos": [2023, 2024, 2025], "ini": 2023, "fim": 2025, "n": 3, "industrial": false, "ativo": true}, {"org": "Bresco Viracopos", "municipio": "Campinas", "tipo": "Controlada", "setor": "Imobiliário Logístico", "anos": [2025], "ini": 2025, "fim": 2025, "n": 1, "industrial": false, "ativo": true}, {"org": "CPFL ENERGIA", "municipio": "Campinas", "tipo": "Matriz", "setor": "Energia", "anos": [2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025], "ini": 2011, "fim": 2025, "n": 15, "industrial": false, "ativo": true}, {"org": "Ci&T Software S/A", "municipio": "Campinas", "tipo": "Matriz", "setor": "Tecnologia da Informação", "anos": [2022, 2023, 2024, 2025], "ini": 2022, "fim": 2025, "n": 4, "industrial": false, "ativo": true}, {"org": "Condomínio Edifício Residencial Porto di Nucci", "municipio": "Campinas", "tipo": "Matriz", "setor": "Imobiliário Residencial", "anos": [2011, 2012], "ini": 2011, "fim": 2012, "n": 2, "industrial": false, "ativo": false}, {"org": "Deloitte - Campinas", "municipio": "Campinas", "tipo": "Unidade", "setor": "Serviços Profissionais", "anos": [2013, 2014], "ini": 2013, "fim": 2014, "n": 2, "industrial": false, "ativo": false}, {"org": "LSL Transportes CAM", "municipio": "Campinas", "tipo": "Unidade", "setor": "Transporte e Logística", "anos": [2015], "ini": 2015, "fim": 2015, "n": 1, "industrial": false, "ativo": false}, {"org": "Magalog Operador Logístico", "municipio": "Campinas", "tipo": "Unidade", "setor": "Transporte e Logística", "anos": [2021], "ini": 2021, "fim": 2021, "n": 1, "industrial": false, "ativo": false}, {"org": "PUC-Campinas", "municipio": "Campinas", "tipo": "Matriz", "setor": "Educação", "anos": [2024, 2025], "ini": 2024, "fim": 2025, "n": 2, "industrial": false, "ativo": true}, {"org": "SAMSUNG ELETRÔNICA DA AMAZÔNIA LTDA", "municipio": "Campinas", "tipo": "Matriz", "setor": "Eletroeletrônicos", "anos": [2022, 2023, 2024, 2025], "ini": 2022, "fim": 2025, "n": 4, "industrial": true, "ativo": true}, {"org": "SG4", "municipio": "Campinas", "tipo": "Matriz", "setor": "Não identificado", "anos": [2023, 2024, 2025], "ini": 2023, "fim": 2025, "n": 3, "industrial": false, "ativo": true}, {"org": "VERT ECOTECH SA", "municipio": "Campinas", "tipo": "Matriz", "setor": "Meio Ambiente e Saneamento", "anos": [2025], "ini": 2025, "fim": 2025, "n": 1, "industrial": false, "ativo": true}, {"org": "Venturus", "municipio": "Campinas", "tipo": "Matriz", "setor": "Tecnologia da Informação", "anos": [2024, 2025], "ini": 2024, "fim": 2025, "n": 2, "industrial": false, "ativo": true}, {"org": "Viracopos", "municipio": "Campinas", "tipo": "Controlada", "setor": "Infraestrutura Aeroportuária", "anos": [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025], "ini": 2015, "fim": 2025, "n": 11, "industrial": false, "ativo": true}, {"org": "Zoetis Indústria", "municipio": "Campinas", "tipo": "Matriz", "setor": "Farmacêutico - Saúde Animal", "anos": [2021, 2022, 2023, 2024, 2025], "ini": 2021, "fim": 2025, "n": 5, "industrial": true, "ativo": true}, {"org": "MOPAR Hortolândia", "municipio": "Hortolândia", "tipo": "Unidade", "setor": "Automotivo - Autopeças", "anos": [2017], "ini": 2017, "fim": 2017, "n": 1, "industrial": true, "ativo": false}, {"org": "CEBI Brasil", "municipio": "Indaiatuba", "tipo": "Matriz", "setor": "Automotivo - Autopeças", "anos": [2025], "ini": 2025, "fim": 2025, "n": 1, "industrial": true, "ativo": true}, {"org": "KION South America", "municipio": "Indaiatuba", "tipo": "Matriz", "setor": "Bens de Capital", "anos": [2023, 2024, 2025], "ini": 2023, "fim": 2025, "n": 3, "industrial": true, "ativo": true}, {"org": "TOYOTA DO BRASIL - INDAIATUBA", "municipio": "Indaiatuba", "tipo": "Unidade", "setor": "Automotivo - Montadora", "anos": [2021], "ini": 2021, "fim": 2021, "n": 1, "industrial": true, "ativo": false}, {"org": "BEIERSDORF", "municipio": "Itatiba", "tipo": "Controlada", "setor": "Higiene Pessoal e Cosméticos", "anos": [2011, 2012, 2013, 2014, 2015], "ini": 2011, "fim": 2015, "n": 5, "industrial": true, "ativo": false}, {"org": "Motorola", "municipio": "Jaguariúna", "tipo": "Matriz", "setor": "Eletroeletrônicos", "anos": [2023], "ini": 2023, "fim": 2023, "n": 1, "industrial": true, "ativo": false}, {"org": "LSL Transportes Paulínia", "municipio": "Paulínia", "tipo": "Unidade", "setor": "Transporte e Logística", "anos": [2015], "ini": 2015, "fim": 2015, "n": 1, "industrial": false, "ativo": false}, {"org": "Silcon - PTR Paulínia", "municipio": "Paulínia", "tipo": "Unidade", "setor": "Meio Ambiente e Saneamento", "anos": [2019, 2020, 2021, 2022], "ini": 2019, "fim": 2022, "n": 4, "industrial": false, "ativo": false}, {"org": "TransJordano Ltda", "municipio": "Paulínia", "tipo": "Matriz", "setor": "Transporte e Logística", "anos": [2025], "ini": 2025, "fim": 2025, "n": 1, "industrial": false, "ativo": true}, {"org": "DENSO DO BRASIL", "municipio": "Santa Bárbara d'Oeste", "tipo": "Unidade", "setor": "Automotivo - Autopeças", "anos": [2024, 2025], "ini": 2024, "fim": 2025, "n": 2, "industrial": true, "ativo": true}, {"org": "BRK SUMARÉ", "municipio": "Sumaré", "tipo": "Unidade", "setor": "Meio Ambiente e Saneamento", "anos": [2021, 2022, 2023, 2024, 2025], "ini": 2021, "fim": 2025, "n": 5, "industrial": false, "ativo": true}, {"org": "Grupo LSL - Matriz", "municipio": "Sumaré", "tipo": "Matriz", "setor": "Transporte e Logística", "anos": [2015, 2016], "ini": 2015, "fim": 2016, "n": 2, "industrial": false, "ativo": false}, {"org": "Honda Automóveis", "municipio": "Sumaré", "tipo": "Matriz", "setor": "Automotivo - Montadora", "anos": [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025], "ini": 2010, "fim": 2025, "n": 16, "industrial": true, "ativo": true}, {"org": "Honda Automóveis - Fábrica Sumaré", "municipio": "Sumaré", "tipo": "Unidade", "setor": "Automotivo - Montadora", "anos": [2017, 2018, 2019, 2020, 2021], "ini": 2017, "fim": 2021, "n": 5, "industrial": true, "ativo": false}, {"org": "Concepta Ingredients", "municipio": "Valinhos", "tipo": "Matriz", "setor": "Alimentos e Ingredientes", "anos": [2025], "ini": 2025, "fim": 2025, "n": 1, "industrial": true, "ativo": true}, {"org": "AGV LOGÍSTICA", "municipio": "Vinhedo", "tipo": "Matriz", "setor": "Transporte e Logística", "anos": [2022, 2023, 2024, 2025], "ini": 2022, "fim": 2025, "n": 4, "industrial": false, "ativo": true}, {"org": "Ascenty Matriz", "municipio": "Vinhedo", "tipo": "Matriz", "setor": "Tecnologia da Informação - Data Center", "anos": [2020, 2021, 2022, 2023, 2024, 2025], "ini": 2020, "fim": 2025, "n": 6, "industrial": false, "ativo": true}, {"org": "Log&Print", "municipio": "Vinhedo", "tipo": "Matriz", "setor": "Transporte e Logística", "anos": [2010, 2011, 2012, 2013, 2014, 2015], "ini": 2010, "fim": 2015, "n": 6, "industrial": false, "ativo": false}, {"org": "Symrise", "municipio": "Vinhedo", "tipo": "Controlada", "setor": "Química - Aromas e Fragrâncias", "anos": [2023, 2024], "ini": 2023, "fim": 2024, "n": 2, "industrial": true, "ativo": true}];
 
+/* primeiro e último ano-base presentes nos dados (eixos dos gráficos) */
+const ANOS = DADOS.flatMap(d => d.anos);
+const ANO_INI = Math.min(...ANOS), ANO_FIM = Math.max(...ANOS);
+
 const RMC20 = ["Americana","Artur Nogueira","Campinas","Cosmópolis","Engenheiro Coelho","Holambra",
 "Hortolândia","Indaiatuba","Itatiba","Jaguariúna","Monte Mor","Morungaba","Nova Odessa",
 "Paulínia","Pedreira","Santa Bárbara d'Oeste","Santo Antônio de Posse","Sumaré","Valinhos","Vinhedo"];
@@ -284,13 +288,13 @@ function gantt(W) {
   const LAB = W < 700 ? 168 : 210, R = 18, TOP = 26, PAD = 16;
   const dados = [...DADOS].sort((a, b) => a.ini - b.ini || a.fim - b.fim || a.org.localeCompare(b.org));
   const H = TOP + dados.length * R + 12;
-  const A0 = 2010, A1 = 2026;
+  const A0 = ANO_INI, A1 = ANO_FIM + 1;
   const x = a => LAB + (a - A0) / (A1 - A0) * (W - LAB - PAD);
   svg.setAttribute("width", W); svg.setAttribute("height", H);
 
-  for (let a = A0; a <= 2025; a++) {
+  for (let a = A0; a <= ANO_FIM; a++) {
     svg.appendChild(el("line", { x1: x(a), x2: x(a), y1: TOP - 8, y2: H - 8, stroke: css("--grid"), "stroke-width": 1 }));
-    if (a % (W < 700 ? 5 : 2) === 0 || a === 2025) {
+    if (a % (W < 700 ? 5 : 2) === 0 || a === ANO_FIM) {
       const t = el("text", { x: x(a) + 2, y: TOP - 13, fill: css("--ink-3"), "font-size": 10.5, class: "m" });
       t.textContent = a; svg.appendChild(t);
     }
@@ -340,7 +344,7 @@ function municipios(W) {
 function porAno(W) {
   const svg = document.getElementById("ano");
   svg.textContent = "";
-  const A0 = 2010, A1 = 2025, serie = [];
+  const A0 = ANO_INI, A1 = ANO_FIM, serie = [];
   for (let a = A0; a <= A1; a++) serie.push([a, DADOS.filter(d => d.anos.includes(a)).length]);
   const L = 34, Rp = 14, T = 16, B = 30, H = 230;
   const max = Math.max(10, Math.ceil(Math.max(...serie.map(s => s[1])) / 5) * 5);
@@ -372,9 +376,9 @@ function porAno(W) {
     svg.appendChild(hit);
   });
   const rot = el("text", { x: x(A1) - 4, y: y(serie[serie.length - 1][1]) - 12, "text-anchor": "end", fill: css("--ink"), "font-size": 11.5, "font-weight": 600 });
-  rot.textContent = `${serie[serie.length - 1][1]} em 2025`; svg.appendChild(rot);
+  rot.textContent = `${serie[serie.length - 1][1]} em ${A1}`; svg.appendChild(rot);
   const ini = el("text", { x: x(A0) + 6, y: y(serie[0][1]) - 11, fill: css("--ink-2"), "font-size": 11 });
-  ini.textContent = `${serie[0][1]} em 2010`; svg.appendChild(ini);
+  ini.textContent = `${serie[0][1]} em ${A0}`; svg.appendChild(ini);
 }
 
 /* ---------- gráfico 4: setores ---------- */
