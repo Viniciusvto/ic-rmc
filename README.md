@@ -43,7 +43,21 @@ pip install -r requirements.txt
 Para abrir no WSL: `cd entregas && explorer.exe .` e dar dois cliques no arquivo
 (`explorer.exe` não aceita caminho com `/`).
 
-O `01` não sobrescreve uma coleta já feita no mesmo dia: se o arquivo do dia existir, ele é mantido.
+O `01` não sobrescreve uma coleta já feita no mesmo dia, e o `02` não baixa de novo os contornos do
+IBGE se eles já existem (use `python scripts/02_baixar_municipios.py --atualizar` para forçar).
+
+## Desenvolvimento
+
+```bash
+pip install -r requirements-dev.txt   # pipeline + pytest + ruff
+pytest                                # testes das funções e da integridade dos dados
+ruff check scripts tests              # erros e estilo
+ruff format scripts tests             # formata o código
+```
+
+A cada push, o GitHub Actions (`.github/workflows/ci.yml`) roda o ruff, os testes e o pipeline
+03–06 a partir dos dados brutos versionados, e falha se a tabela final ou o relatório não saírem
+idênticos aos do repositório.
 
 ## Como funciona
 
