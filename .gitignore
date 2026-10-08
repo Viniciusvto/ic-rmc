@@ -1,10 +1,20 @@
+# Ambientes virtuais e cache do Python
+venv/
+.venv/
 __pycache__/
 *.pyc
-.venv/
-venv/
 .ipynb_checkpoints/
-# temporários do Office (aparecem quando um .docx está aberto)
-~$*
-.DS_Store
+
+# Lixo do Windows/WSL, macOS e Office
+*:Zone.Identifier
 Thumbs.db
-docs/
+.DS_Store
+~$*
+
+# Etapa do meio: refeita a cada execução do pipeline
+dados/intermediarios/
+
+# Anotações pessoais ficam fora; só o diário de pesquisa é versionado.
+# ("docs/*" e não "docs/": se a pasta inteira é ignorada, o "!" não consegue reincluir um arquivo dela)
+docs/*
+!docs/diario-de-pesquisa.md
