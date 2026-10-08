@@ -26,3 +26,6 @@
 - Lição: na revisão manual, procurar também siglas (ex.: CAM) além dos nomes dos municípios.
 - Setores: dados/manual/setores.csv, herdado do painel de setembro (util_setores_antigos.py).
 - Painel de setembro preservado em referencias/painel_antigo_2026-09.html (commit 9642646).
+- Segunda varredura da lista de revisão (35), procurando siglas e abreviações: nenhum outro
+  nome indica município da RMC. Os 3 pontos fora do Brasil também foram testados com sinal
+  invertido e latitude/longitude trocadas: nenhuma variação cai na RMC.
